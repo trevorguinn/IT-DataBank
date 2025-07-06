@@ -1,0 +1,45 @@
+{
+  "displayName": "Baseline Security Policy - Windows 10",
+  "description": "Baseline Intune policy to apply essential Windows 10 security configurations including BitLocker, Defender, SmartScreen, and Secure Boot. Intended for use in lab, test, or production environments.",
+  "platforms": ["windows10"],
+  "assignments": [
+    {
+      "target": {
+        "@odata.type": "#microsoft.graph.groupAssignmentTarget",
+        "groupId": "00000000-0000-0000-0000-000000000000"
+      }
+    }
+  ],
+  "settings": [
+    {
+      "id": "windows10EndpointProtectionPolicy/EnableSmartScreen",
+      "value": true
+    },
+    {
+      "id": "windows10EndpointProtectionPolicy/EnableWindowsDefender",
+      "value": true
+    },
+    {
+      "id": "windows10SecurityBaseline/RequireSecureBoot",
+      "value": true
+    },
+    {
+      "id": "windows10BitLockerPolicy/EnableBitLocker",
+      "value": true
+    },
+    {
+      "id": "windows10SecurityBaseline/AllowAutoPilotReset",
+      "value": false
+    },
+    {
+      "id": "windows10SecurityBaseline/DisablePasswordRevealButton",
+      "value": true
+    },
+    {
+      "id": "windows10SecurityBaseline/EnableDefenderTamperProtection",
+      "value": true
+    }
+  ]
+}
+
+

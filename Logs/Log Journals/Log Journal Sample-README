@@ -1,0 +1,19 @@
+The following lists a Sample Journal for Troubleshooting and tracking ticket issues.
+
+
+Date: 2025-06-27
+System: Win10Pro | User: jsmith
+
+Symptoms:
+- Browser hijack (default changed)
+- Slow boot
+- AV disabled
+
+Actions Taken:
+- Booted into Safe Mode with Networking
+- Ran Malwarebytes scan — 6 threats removed
+- Restored default browser
+- Verified registry settings: no rogue startup entries
+- Enabled Windows Defender
+
+Status: Resolved

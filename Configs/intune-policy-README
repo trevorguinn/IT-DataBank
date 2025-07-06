@@ -1,0 +1,72 @@
+his policy template is designed to serve as a **baseline security configuration** for Windows 10 devices managed through Microsoft Intune.
+
+##  Overview
+This JSON file defines an Intune Device Configuration Profile with essential security settings for protecting Windows 10 systems in **lab**, **test**, or **production** environments.
+
+---
+
+## Policy Features
+| Setting ID                                                   | Description                                 | Value  |
+|--------------------------------------------------------------|---------------------------------------------|--------|
+| `EnableSmartScreen`                                          | Enables Microsoft SmartScreen               | `true` |
+| `EnableWindowsDefender`                                      | Turns on Microsoft Defender Antivirus       | `true` |
+| `RequireSecureBoot`                                          | Ensures Secure Boot is enabled              | `true` |
+| `EnableBitLocker`                                            | Activates BitLocker drive encryption        | `true` |
+| `AllowAutoPilotReset`                                        | Disables unauthorized AutoPilot resets      | `false`|
+| `DisablePasswordRevealButton`                                | Hides the password reveal button            | `true` |
+| `EnableDefenderTamperProtection`                             | Prevents unauthorized changes to Defender   | `true` |
+
+---
+
+## File Location
+Place this file in your portfolio repo under:
+```
+configs/intune/intune-policy-template.json
+```
+
+---
+
+## Deployment Instructions
+To deploy this policy using PowerShell and Graph API:
+
+1. Install the `Microsoft.Graph.Intune` module
+2. Authenticate to your tenant
+3. Import the policy with a custom script:
+
+```powershell
+Import-IntunePolicy -Path "configs/intune/intune-policy-template.json"
+```
+
+> You must replace the `groupId` with your actual Azure AD group ID in the JSON file.
+
+---
+
+## Compatibility
+- Windows 10 Professional, Enterprise, and Education
+- Intune/MEM Admin Center
+- Graph API or PowerShell automation
+
+---
+
+## Use Cases
+- Establish secure default policies in a corporate environment
+- Simulate enterprise configurations in a home lab
+- Source control Intune policy changes
+
+---
+
+## Related Files (Optional)
+- `scripts/deploy-intune-policy.ps1`
+- `logs/intune/deployment-results.log`
+- `docs/intune-policy-walkthrough.md`
+
+---
+
+## Notes
+- Always validate settings in a test group before deploying to production
+- Be cautious when enforcing security settings on unmanaged devices
+
+---
+
+### Author: TREVOR GUINN  
+[GitHub Portfolio](https://github.com/trevorguinn)

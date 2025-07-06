@@ -1,0 +1,9 @@
+# Example use of sshd_config snippet. The sshd_config file is the configuration file for the OpenSSH server daemon (sshd). It controls how remote systems connect to your computer using SSH (Secure Shell), a secure protocol for managing systems and transferring files over a network.
+
+
+# Port Entry Example 
+
+Port 22
+PermitRootLogin no
+PasswordAuthentication yes
+AllowUsers itadmin user2
