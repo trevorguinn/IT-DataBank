@@ -1,0 +1,9 @@
+Date: 2025-07-03
+User: t.guinn
+Issue: Login failed — "The trust relationship between this workstation and the primary domain failed."
+
+- Verified AD connectivity
+- Removed computer from domain, rebooted, rejoined domain
+- Confirmed user could log in post-rejoin
+
+Resolution: Resolved — workstation restored to domain

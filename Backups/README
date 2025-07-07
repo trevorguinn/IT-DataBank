@@ -1,0 +1,14 @@
+# Backup Scripts & Policies
+
+This directory includes backup policies, rotation strategies, and automation scripts for both Windows and Linux environments.
+
+## Contents
+
+- `rsync-weekly-job.sh`: Bash script for automated weekly Linux backups using rsync.
+- `backup-policy-overview.md`: Describes rotation strategies (GFS, 3-2-1), frequency, storage, and encryption best practices.
+
+## Use Cases
+
+- Backup automation and planning
+- Compliance and redundancy
+- Hands-on scripting demonstration

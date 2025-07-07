@@ -1,0 +1,14 @@
+# Inventory Management
+
+This folder includes tracking templates for both hardware and software assets in an IT environment.
+
+## Contents
+
+- `hardware-inventory-sheet.xlsx`: Spreadsheet template to track asset tags, purchase dates, and warranty status.
+- `software-license-log.csv`: Example log to monitor license counts, expiry, and assignments.
+
+## Use Cases
+
+- Lifecycle tracking
+- Budgeting and audits
+- Compliance with licensing terms

@@ -1,0 +1,14 @@
+# Vendor Information
+
+This folder stores key contact information, procurement tracking, and service provider notes.
+
+## Contents
+
+- `vendor-contact-sheet.md`: Table of vendors, services, and primary contacts.
+- `asset-tracker-template.xlsx`: (Coming soon) Template to track vendor-supplied equipment across devices.
+
+## Use Cases
+
+- Centralizing vendor contact info
+- Improving hardware lifecycle documentation
+- Coordinating service contracts

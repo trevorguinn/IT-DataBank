@@ -1,0 +1,11 @@
+Date: 2025-07-05
+User: T.Guinn
+Issue: Cannot print; HP LaserJet shows "Offline"
+
+- Verified IP ping to 192.168.10.45 — successful
+- Checked print queue — 2 jobs stuck
+- Cleared queue and restarted Print Spooler
+- Removed/re-added printer from Devices and Printers
+- Test page printed successfully
+
+Resolution: Resolved — user confirmed success

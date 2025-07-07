@@ -1,0 +1,58 @@
+#  Weekly Rsync Backup Script
+
+This script automates a weekly backup of the `/home` directory using `rsync`, logging all activity and errors. It is intended for use in Linux environments where automated, versioned backups are part of routine operational procedures.
+
+---
+
+##  Features
+- Uses `rsync` with archive and human-readable flags (`-avh`)
+- Deletes destination files that no longer exist at the source (`--delete`)
+- Logs all actions to `/var/log/rsync-backup.log`
+- Creates a new backup folder named with the current date: `home-YYYY-MM-DD`
+- Basic error handling and log protection
+
+---
+
+##  Script Location
+Store this script in your IT portfolio repository under:
+```
+scripts/rsync-backup.sh
+```
+Make it executable:
+```bash
+chmod +x scripts/rsync-backup.sh
+```
+
+---
+
+##  Example Cron Job
+To run this script every Sunday at 2 AM:
+```cron
+0 2 * * 0 /path/to/scripts/rsync-backup.sh
+```
+
+---
+
+##  Testing the Script
+Before automating:
+```bash
+sudo ./scripts/rsync-backup.sh
+```
+Then check the log:
+```bash
+cat /var/log/rsync-backup.log
+```
+
+---
+
+##  Notes
+- Ensure `/mnt/backup` is mounted and writable before running
+- You may need to run with `sudo` if permissions are restricted
+- The script does not currently rotate or archive old logs — use `logrotate` if needed
+
+---
+
+##  Use Cases
+- Backing up user directories on a workstation or server
+- Demonstrating automation and logging in your portfolio
+- Practicing secure scripting and system administration fundamentals
