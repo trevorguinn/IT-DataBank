@@ -1,0 +1,86 @@
+# LabNet Troubleshooting Logbook
+
+This document tracks real issues encountered in my home lab and how they were diagnosed and resolved. It demonstrates a methodical approach to troubleshooting, similar to real help desk or sysadmin environments.
+
+---
+
+###  Issue 1: NAT Adapter Error – "No NAT network name is currently specified"
+
+**Symptoms:**
+- VM unable to connect to the internet after adding NAT adapter
+- VirtualBox error message when starting VM
+
+**Diagnosis:**
+- Checked Network settings → Adapter 2 (NAT) was enabled, but dropdown was empty
+- Verified NAT network had not been created in VirtualBox preferences
+
+**Fix:**
+1. Opened VirtualBox > File > Network > NAT Networks
+2. Created new NAT network: `LabNet-NAT`
+3. Reattached it to VM → NAT connection successful
+
+ **Resolved:** VM had internet access via NAT when needed
+
+---
+
+###  Issue 2: `sudo apt update` failed – "Public key is not available"
+
+**Symptoms:**
+- Ubuntu server failed to update
+- Error: `The following signatures couldn't be verified because the public key is not available`
+
+**Diagnosis:**
+- Looked up missing key ID from the error message
+- Confirmed it was a third-party repo missing its signing key
+
+**Fix:**
+```bash
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys <KEYID>
+sudo apt update
+
+
+Issue 3: Syslog Not Receiving Remote Logs
+
+##Symptoms:
+
+Central Ubuntu server not receiving logs from other lab VMs
+
+Configured /etc/rsyslog.conf, but no logs showed in /var/log/syslog
+
+## Diagnosis:
+
+Confirmed rsyslog service was not installed or enabled
+
+Port 514 was not open or listening
+
+Incorrect remote logger config on client
+
+# Fix:
+
+Installed rsyslog:
+sudo apt install rsyslog
+Enabled UDP reception in /etc/rsyslog.conf:
+
+module(load="imudp")
+input(type="imudp" port="514")
+
+Restarted service:
+
+sudo systemctl restart rsyslog
+Used logger from client to test:
+
+
+logger "Test message from lab-win10"
+
+Resolved: Centralized logs confirmed from multiple devices
+
+
+
+## Tools Used
+VirtualBox network manager
+
+PowerShell & Bash commands
+
+SSH for remote log checks
+
+/etc/hosts, Wireshark, ping, and trace

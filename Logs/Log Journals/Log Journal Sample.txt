@@ -2,7 +2,8 @@ The following lists a Sample Journal for Troubleshooting and tracking ticket iss
 
 
 Date: 2025-06-27
-System: Win10Pro | User: T.Guinn
+System: Win10Pro
+User: T.Guinn
 
 Symptoms:
 - Browser hijack (default changed)

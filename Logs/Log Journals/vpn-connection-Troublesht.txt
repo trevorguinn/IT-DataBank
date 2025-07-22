@@ -1,0 +1,11 @@
+Date: 2025-07-06
+User: T.Guinn
+
+Issue: VPN connects but cannot access internal network
+
+Steps Taken:
+- Verified IP assignment via `ipconfig`
+- DNS not resolving — changed to internal DNS server
+- Disabled split tunneling — resolved routing issue
+
+Resolution: Connected to VPN, tested internal resources — success

@@ -1,0 +1,79 @@
+Date: 2025-06-15
+System: Linux Mint Linux Kali VM
+User: T.Guinn
+
+Issue: Kali and Mint VMs Unable to Ping or Connect
+
+
+
+Overview:
+
+VMs on internal LabNet were unable to communicate, resulting in Destination Host Unreachable errors and failed log forwarding between Kali Linux and Linux Mint.
+
+Initial Observations:
+
+Both VMs had dual network adapters:
+
+Adapter 1: Internal Network (LabNet)
+
+Adapter 2: NAT (for internet access)
+
+Troubleshooting Steps:
+
+Step 1: Confirm VM Network Settings
+
+Verified that both Kali and Mint VM network adapters were configured correctly:
+
+Adapter 1: Internal Network, name: LabNet, Cable Connected: ✔️
+
+Adapter 2: NAT
+
+Step 2: Check VM IP Configurations
+
+Kali:
+
+ip a
+# eth1: 192.168.56.11/24 (Internal)
+# eth0: 10.x.x.x/24 (NAT)
+
+Mint:
+
+ip a
+# enp0s3: 192.168.56.20/24 (Internal)
+# enp0s8: 10.0.2.15/24 (NAT)
+
+Step 3: Identify Routing Issue
+
+Both VMs routed traffic by default through their NAT adapters, causing internal traffic to fail.
+
+Step 4: Apply Static Routing Fix
+
+Kali (send internal traffic through internal adapter):
+
+sudo ip route add 192.168.56.0/24 dev eth1
+
+Mint (send internal traffic through internal adapter):
+
+sudo ip route add 192.168.56.0/24 dev enp0s3
+
+Step 5: Verify Connectivity
+
+From Kali:
+
+ping 192.168.56.20
+# Successful reply received
+
+From Mint:
+
+ping 192.168.56.11
+# Successful reply received
+
+Resolution:
+
+The manual static routes resolved the internal connectivity issue, enabling successful communication between Kali and Mint VMs on LabNet.
+
+Follow-Up:
+
+Continued log forwarding configuration via rsyslog from Kali to Mint.
+
+Monitored and confirmed successful log receipt on Mint syslog server.
